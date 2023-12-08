@@ -22,16 +22,35 @@ class LinkedList:
 
         return current_node.data
 
+    def index_of(self, value):
+      current_node = self.first_node
+      current_index = 0
 
-def test_fibonacci():
-  node1 = Node('once')
-  node2 = Node('upon')
-  node1.next = node2
-  list = LinkedList(node1)
-  node3 = Node('a')
-  node4 = Node('time')
-  node2.next = node3
-  node3.next = node4
+      while current_node is not None:
+        if current_node.data == value:
+          return current_index
+        current_node = current_node.next
+        current_index += 1
+
+      return None
+
+
+node1 = Node('once')
+node2 = Node('upon')
+node1.next = node2
+list = LinkedList(node1)
+node3 = Node('a')
+node4 = Node('time')
+node2.next = node3
+node3.next = node4
+
+def test_read():
   expected = 'upon' 
-  actual = list.read(1) 
+  actual = list.read(1)
   assert expected == actual
+
+
+def test_index_of():
+  excepted = 3
+  actual = list.index_of('time')
+  assert excepted == actual
