@@ -50,6 +50,32 @@ class LinkedList {
     }
     return currentIndex
   }
+
+  insertAtIndex(index, value) {
+    let currentNode = this._firstNode;
+    let currentIndex = 0;
+
+    while (currentIndex < index) {
+      currentNode = currentNode.nextNode;
+      currentIndex += 1;
+    }
+
+    const newNode = new Node(value);
+    newNode.nextNode = currentNode.nextNode;
+    currentNode.nextNode = newNode;
+  }
+
+  deleteAtIndex(index) {
+    let currentNode = this._firstNode;
+    let currentIndex = 0;
+
+    while (currentIndex < index - 1) {
+      currentNode = currentNode.nextNode;
+      currentIndex += 1;
+    }
+
+    currentNode.nextNode = currentNode.nextNode.nextNode;
+  }
 }
 
 describe('linked list', () => {
@@ -68,5 +94,15 @@ describe('linked list', () => {
 
   it('search', () => {
     expect(list.indexof('time')).toBe(3)
+  })
+
+  it('insert', () => {
+    list.insertAtIndex(2, 'yellow')
+    expect(list.read(3)).toBe('yellow')
+  })
+
+  it('delete', () => {
+    list.deleteAtIndex(2)
+    expect(list.read(3)).toBe('time')
   })
 });

@@ -34,6 +34,28 @@ class LinkedList:
 
       return None
 
+    def insert_at_index(self, index, value):
+      current_node = self.first_node
+      current_index = 0
+
+      while current_index < index:
+        current_node = current_node.next
+        current_index += 1
+
+      new_node = Node(value)  
+      new_node.next = current_node.next
+      current_node.next = new_node
+
+    def delete_at_index(self, index):
+      current_node = self.first_node
+      current_index = 0
+
+      while current_index < index - 1:
+        current_node = current_node.next
+        current_index += 1
+
+      current_node.next = current_node.next.next
+
 
 node1 = Node('once')
 node2 = Node('upon')
@@ -51,6 +73,18 @@ def test_read():
 
 
 def test_index_of():
-  excepted = 3
+  expected = 3
   actual = list.index_of('time')
-  assert excepted == actual
+  assert expected == actual
+
+def test_insert_at_index():
+  list.insert_at_index(2, 'yellow')
+  expected = list.read(3)
+  actual = 'yellow' 
+  assert expected == actual
+
+def test_delete_at_index():
+  list.delete_at_index(2)
+  expected = list.read(3) 
+  actual = 'time' 
+  assert expected == actual
