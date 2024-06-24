@@ -6,6 +6,6 @@ describe("피보나치 함수", () => {
     return memo[n] = fibonacci(n - 1, memo) + fibonacci(n - 2, memo)
   }
   test("피보나치", () => {
-    expect(fibonacci(100)).toEqual(55);
+    expect(fibonacci(10)).toEqual(55);
   });
 });

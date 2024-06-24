@@ -1,4 +1,3 @@
-
 # __fibo_cache = {}
 
 
@@ -22,6 +21,6 @@ def fibonacci(number):
 
 
 def test_fibonacci():
-    expected = 20
-    actual = fibonacci(50)
+    expected = 55
+    actual = fibonacci(10)
     assert expected == actual
