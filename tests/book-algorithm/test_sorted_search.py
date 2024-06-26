@@ -11,7 +11,7 @@ def binary_search(array, value):
         elif value > array[mid_bound]:
             lower_bound = mid_bound + 1
         elif value < array[mid_bound]:
-            max_bound = mid_bound - 1
+            upper_bound = mid_bound - 1
 
 
 def test_binary_search():
